@@ -38,9 +38,9 @@ app.get('/divide', isNumbers, (req, res) =>{
     const numbers = req.parsed
     if (numbers.y === 0)
         res.status(400).json({error: 'Division by zero is not allowed.'})
-        return
-    res.status(200).json({result: numbers.x / numbers.y})
-}) 
+    else
+        res.status(200).json({result: numbers.x / numbers.y})
+})  
 
 app.listen(PORT, (req,res)=>{
     console.log("Application running on port 3000 🚀🚀")
