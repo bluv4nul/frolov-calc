@@ -16,7 +16,7 @@ const isNumbers = (req, res, next) => {
 }
 
 app.get('/', (req, res) => {
-    res.send('Введите действие (/add, /minus, /divide, /multiply + ?x={значение}&y={значение})')
+    res.send('Введите действие (/add, /subtract, /divide, /multiply + ?x={значение}&y={значение})')
 })
 
 app.get('/add', isNumbers, (req, res) =>{
@@ -24,7 +24,7 @@ app.get('/add', isNumbers, (req, res) =>{
     res.status(200).json({result: numbers.x + numbers.y})
 })
 
-app.get('/minus', isNumbers, (req, res) =>{
+app.get('/subtract', isNumbers, (req, res) =>{
     const numbers = req.parsed
     res.status(200).json({result: numbers.x - numbers.y})
 })
@@ -38,8 +38,10 @@ app.get('/divide', isNumbers, (req, res) =>{
     const numbers = req.parsed
     if (numbers.y === 0)
         res.status(400).json({error: 'Division by zero is not allowed.'})
+        return
     res.status(200).json({result: numbers.x / numbers.y})
 }) 
 
 app.listen(PORT, (req,res)=>{
+    console.log("Application running on port 3000 🚀🚀")
 })
