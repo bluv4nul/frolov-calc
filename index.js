@@ -1,6 +1,6 @@
 const express = require("express")
 const app = express()
-const PORT = 2000
+const PORT = 3000
 
 const isNumbers = (req, res, next) => {
     if( !(isNaN(req.query.x)) && !(isNaN(req.query.y)) ){
@@ -42,5 +42,4 @@ app.get('/divide', isNumbers, (req, res) =>{
 }) 
 
 app.listen(PORT, (req,res)=>{
-    console.log(`Server started: http://localhost:${PORT}`)
 })
